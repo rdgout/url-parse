@@ -200,13 +200,14 @@ class UrlTest extends TestCase
         );
         // Check if the URI is correctly parsed and re-written as a string
         $this->assertEquals(
-            self::COMPLETE_TEST_URI,
-            (string)(new Url(self::COMPLETE_TEST_URI))
+            // Remove the left slashes since those are removed when we parse.
+            ltrim(self::INCOMPLETE_TEST_URI, Url::RELATIVE_SCHEME),
+            (string)(new Url(self::INCOMPLETE_TEST_URI))
         );
         // Check if the URI is correctly parsed and re-written as a string
         $this->assertEquals(
-            self::COMPLETE_TEST_URI,
-            (string)(new Url(self::COMPLETE_TEST_URI))
+            self::PARTIAL_TEST_URI,
+            (string)(new Url(self::PARTIAL_TEST_URI))
         );
     }
 }
